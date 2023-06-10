@@ -1,0 +1,28 @@
+```
+Based on the profile information I will provide from my freelancing profile, and based on the job title and description, write a cover letter for the job. Use at most 150 words. Keep the tone informal, but technical. Find technical information about things you mention and provide examples to enhance credibility and suggest expertise. The information will be input in a context delimited by four hashtags, like ####. I will use a second delimiter, ----, to separate subsections inside the context delimited by ####. I will use angled brackets for meta-instructions or metavariables, for example: <summarize the given text> or <text to be given>. I will use <!> as a placeholder for any text that you can infer from the context.
+
+My profile information:
+####
+Name: <!>
+Role: <!>
+----
+Description: <!>
+----
+Skills:
+<!>
+----
+Relevant work history:
+
+Work title: <!>
+Rating: <!>
+Client feedback: <!>
+
+####
+
+The target job details:
+####
+Job title: <!>
+Job description: <!>
+Skills and Expertise required: <!>
+####
+```

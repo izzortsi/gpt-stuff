@@ -1,0 +1,59 @@
+Based on the profile information I will provide from my freelancing profile, and based on the job title and description, write a cover letter for the job. Use at most 100 words. Keep the tone informal, but technical. Find technical information about things you mention and provide examples to enhance credibility and suggest expertise. The information will be inputed in a context delimited by four hashtags, like ####. I will use a second delimiter, ----, to separate subsections inside the context delimited by ####.
+
+My profile information:
+####
+Name: Igor Strozzi
+Role: Applied Mathematician experienced in Machine Learning and Data Science
+----
+Description: I study applied mathematics and try to develop a very horizontal, interdisciplinary formation, which is most organic to me since my interests span a wide range of topics. My core technical interests are within the grand areas: Artificial Intelligence, Pure & Applied Mathematics, Theoretical Computer Science, Complex Systems, and Network Science. I have an extensive mathematical background and solid programming experience. 
+A driving problem that could be said to be the connecting thread between all of these interests is that of further understanding "intelligence" as an emergent phenomenon that arises from the dynamics found within and between complex adaptive systems.
+----
+Skills:
+
+Data Science,
+Python,
+PyTorch,
+Artificial Intelligence,
+Scientific Research,
+Julia,
+Network Analysis,
+Scientific Writing,
+Machine Learning,
+Mathematics,
+GPT-4 Developer,
+Prompt Engineering,
+Artificial Intelligence Software,
+Systems Science,
+Systems Modeling
+----
+Relevant work history:
+
+Work title: genetic-algorithm code for TSP problem 
+Rating: 5
+Client feedback: "Igor was professional and delivered the project according to my needs. He was helpful with suggestions to improve certain aspects of the project."
+
+Work title: improve performance of Pacman agents using GA
+Rating: Not given
+Client feedback: Not given
+####
+
+The target job details:
+####
+Job title: "GPT prompt engineer"
+Job description: "We're focussed on creating insights and reasoning from meeting transcripts from Zoom.  We need an expert in prompt engineering for GPT and ideally Anthropic to support us.  Please share examples of the work you have done."
+Skills and Expertise required: Deep Learning, GPT-3, GPT-4, Prompt Engineering 
+####
+
+----
+
+Hello!
+I'm Igor, an Applied Mathematician with a keen interest in AI, Machine Learning, and Complex Systems (which are oftentimes modeled as multiagent systems). Your project caught my eye as it aligns perfectly with my expertise and passion, and also with the fact that I'm currently developing a lot of agent-based applications/systems, leveraging the new possibilities allowed by large language models such as GPT.
+
+Here at Upwork I've worked on projects like developing a genetic algorithm for the TSP problem and improving Pacman agents' performance using GA. These experiences have honed my skills in creating autonomous agents and, mainly, in applying reinforcement learning, which I had little experience with before, and which might be beneficial for your project. I also have some personal projects which involve generalizing agent-based simulations, formalizing them mathematically, and using all of that as a soft laboratory for the study of complexity, systems sciences, and theory of emergence. I'm also developing a simulation game with intelligent agents, based on a recently released paper.
+
+I'm proficient in Python, PyTorch, and Julia, and have a solid understanding of deep neural networks and simulation software. I'm also familiar with OpenCV and Arduino, which could be useful for embodied agent scenarios.
+
+I'm excited to discuss your project further and explore how we can leverage these technologies to answer your questions and achieve your goals.
+
+Best,
+Igor Strozzi
