@@ -11,9 +11,19 @@ from transformers import pipeline
 # load_dotenv()
 
 # Get OpenAI API key from environment variables
+openai.api_key = os.environ.get("OPEN_AI_FREE_API_KEY")
 openai.api_base = 'https://api.pawan.krd/v1'
-openai.api_key = "pk-gJLIzltadzOmCjcGgkvKCLALZbXxBwwJkeyGuJcxYSSdWZDK"
 
+from openai import Completion
+
+MODEL = "gpt-3.5-turbo"
+
+def complete(prompt: str, max_tokens: int | None = None) -> str:
+    """`max_tokens` is tokens after prompt"""
+
+    completion = Completion.create(model=MODEL, prompt=prompt, max_tokens=max_tokens)
+
+    return completion.choices[0].text
 
 def generate(prompt, use_openai=True):
     """
@@ -39,16 +49,6 @@ def generate(prompt, use_openai=True):
 
         message = response.choices[0].text
         return message.strip()
-
-    else:
-        hf_generator = pipeline('text-generation', model='EleutherAI/gpt-neo-1.3B', device=0)
-        output = hf_generator(prompt, max_length=len(prompt)+128, do_sample=True)
-        out = output[0]['generated_text']
-        if '### Response:' in out:
-            out = out.split('### Response:')[1]
-        if '### Instruction:' in out:
-            out = out.split('### Instruction:')[0]
-        return out.strip()
 
 
 def get_rating(x):
