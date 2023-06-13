@@ -1,3 +1,5 @@
+#%%
+
 
 import openai
 import os
@@ -22,11 +24,11 @@ SYS_PROMPT = """You are a personal assistant. Your goal is to help me organize m
 class GPT:
     def __init__(self, sys_prompt=SYS_PROMPT, model="gpt-3.5-turbo", temperature = 1):
         self._sys_messages = [{"role": "system", "content": sys_prompt}]
-        self._messages = self._sys_messages
+        self._messages = []
         self.response = ""
         self._model = model
         self._temperature = temperature
-
+        
     def set_system(self, sys_prompt):
         self._sys_messages = [{"role": "system", "content": sys_prompt}]
     
@@ -34,17 +36,16 @@ class GPT:
         self._sys_messages.append({"role": "system", "content": sys_prompt})
 
     def completion(self, prompt, role = "user", chat=False):
-        user_message = [{"role": role, "content": prompt}]
-        self._messages += user_message
+        messages = self._sys_messages + [{"role": role, "content": prompt}]
         response = openai.ChatCompletion.create(
             model=self._model,
-            messages=self._messages,
+            messages=messages,
             temperature=self._temperature, # this is the degree of randomness of the model's output
             max_tokens=1000,
         )
         self.response = response.choices[0].message["content"]
-        self._messages += [{"role": "assistant", "content": self.response}]
-            
+        if chat:
+            self._messages = messages + [{"role": "assistant", "content": self.response}]
         return self.response
 
 def chat(gpt):
@@ -56,8 +57,11 @@ def chat(gpt):
         print("Bot:", gpt.completion(prompt, chat=True))
 
 GPT.chat = chat
+#%%
 
 if __name__ == "__main__":
     gpt = GPT()
     if len(sys.argv) > 1:
         gpt.chat()
+
+# %%
