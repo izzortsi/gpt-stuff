@@ -1,3 +1,5 @@
+#%%
+
 
 import openai
 import os
@@ -7,20 +9,34 @@ import json
 from dataclasses import dataclass
 from typing import List
 from text_generation import generate, complete
+
+# openai.api_key = os.environ.get("OPEN_AI_API_KEY")
+# openai.api_base = 'https://api.openai.com/v1'
+# MODEL = "gpt-3.5-turbo-0613"
+
 openai.api_key = os.environ.get("OPEN_AI_FREE_API_KEY")
 openai.api_base = 'https://api.pawan.krd/v1'
 
-SYS_PROMPT = """You are a personal assistant. Your goal is to help me organize my life
-                and make me more productive. I will message you things like tasks I have to do, ideas that come to my mind,
-                projects I want to work on, and so on. I will also ask you questions about topics I am interested in 
-                or that would be helpful for me to know, for instance, to accomplish a task I have to do. 
-                You will have to organize all this information and help me make sense of it. For instance, you could
-                create a to-do list for me, or a list of ideas I have had, or a list of projects I want to work on. You should also remember
-                what I have told you and be able to answer questions about it."""
+MODEL = "gpt-3.5-turbo"
+#You will have to organize all this information and help me make sense of it.
+SYS_PROMPT = """You are a smart inbox machine. Your goal is to sort information I feed you into an organized database. I will message you things like tasks I have to do, ideas that come to my mind,
+                projects I want to work on, and so on. You will classify them into categories and store them in a database. The database is a list of messages, each message has a category and a content. 
+                Put every message in the database, in the format: <category>: <message>. For example, if I tell you "I have to do the dishes", you will store it in the database as "task: I have to do the dishes".
+                If a message starts with @, it is a command. The following commands are available:
+                
+                @show: show me the database, in the format: <category>: <message>
+                @delete: delete a message from the database. The message will be in the format: <category>: <message>
+                @retrieve <word>: retrieve all messages from the database that contain <word>. Show them in the format: <category>: <message>.
 
+                If a message is not a command, reply it with: "I have classified this message as a <category> and stored it in the database. The database now contains <number> messages."
+
+                """
+
+
+TEMPERATURE = 0.5
 
 class GPT:
-    def __init__(self, sys_prompt=SYS_PROMPT, model="gpt-3.5-turbo", temperature = 1):
+    def __init__(self, sys_prompt=SYS_PROMPT, model=MODEL, temperature = TEMPERATURE):
         self._sys_messages = [{"role": "system", "content": sys_prompt}]
         self._messages = self._sys_messages
         self.response = ""
@@ -56,8 +72,16 @@ def chat(gpt):
         print("Bot:", gpt.completion(prompt, chat=True))
 
 GPT.chat = chat
+#%%
+
 
 if __name__ == "__main__":
     gpt = GPT()
     if len(sys.argv) > 1:
         gpt.chat()
+
+# %%
+# gpt = GPT()
+# #%%
+# gpt.completion("I have to do the dishes", role="user")
+# %%
